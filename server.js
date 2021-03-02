@@ -1,6 +1,8 @@
+// Required Consts!
 const express = require("express");
 // const path = require("path");
 const app = express();
+const mongoose = require("mongoose");
 
 //Port 5001 cause I'm crazy!
 const PORT = process.env.PORT || 5001;
@@ -25,6 +27,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
 
 // Let the user know the server is running, and which port.  Yeay!
 app.listen(PORT, () => {

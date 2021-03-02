@@ -1,5 +1,5 @@
 const express = require("express");
-const path = require("path");
+// const path = require("path");
 const app = express();
 
 //Port 5001 cause I'm crazy!

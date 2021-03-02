@@ -4,7 +4,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <h1>Yeay!</h1>
+      <h1>Google Books API</h1>
     </div>
   );
 }

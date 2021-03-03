@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // set the api key to a const
-
+const APIKEY = "key"
 
 // test search
 // let search = "Apathy"

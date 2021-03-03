@@ -7,7 +7,6 @@ const mongoose = require("mongoose");
 //Port 5001 cause I'm crazy!
 const PORT = process.env.PORT || 5001;
 
-
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -19,7 +18,6 @@ if (process.env.NODE_ENV === "production") {
 
 // API Routes start with API and live at apiRoutes.js
 app.use("/api", require("./routes/apiRoutes"))
-
 
 // Send every other request to the React app
 // Define any API routes before this runs

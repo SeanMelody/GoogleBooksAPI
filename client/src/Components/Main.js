@@ -14,15 +14,16 @@ export default class Main extends Component {
 
     // Component did mount to get the API request from Utils / API
     componentDidMount() {
+        this.searchBooks("Harry+Potter");
         //Call the API search function from Utils/API
-        API.APISearch()
-            //Get the data set it to state and console log it
-            .then(res => {
-                // console.log(res.data.items)
-                this.setState({ results: res.data.items })
-                console.log(this.state.results)
-                // Gotta check them errors!
-            }).catch(err => console.log(err))
+        // API.APISearch()
+        //     //Get the data set it to state and console log it
+        //     .then(res => {
+        //         // console.log(res.data.items)
+        //         this.setState({ results: res.data.items })
+        //         console.log(this.state.results)
+        //         // Gotta check them errors!
+        //     }).catch(err => console.log(err))
     }
     // componentDidMount() {
     //     this.searchBooks("Harry+Potter");
@@ -31,7 +32,11 @@ export default class Main extends Component {
 
     searchBooks = query => {
         API.APISearch(query)
-            .then(res => this.setState({ result: res.data.items }))
+            .then(res => {
+                this.setState({ result: res.data.items })
+                console.log(res.data.items)
+            })
+
             .catch(err => console.log(err));
     };
 
@@ -50,6 +55,7 @@ export default class Main extends Component {
         this.searchBooks(this.state.search);
         console.log(this.state.search)
         console.log("line48")
+
     };
 
     // Handle input change to get the data from the search bar and make it render
@@ -68,9 +74,11 @@ export default class Main extends Component {
     render() {
         return (
             <div>
-                <Search handleInputChange={this.handleInputChange}
-                    handleFormSubmit={this.handleFormSubmit}
-                    value={this.state.search} />
+                <Search
+                    value={this.state.search}
+                    handleInputChange={this.handleInputChange}
+                    handleFormSubmit={this.handleFormSubmit} />
+
             </div>
         )
     }

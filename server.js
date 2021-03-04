@@ -26,7 +26,12 @@ app.get("*", (req, res) => {
 });
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+});
 
 // Let the user know the server is running, and which port.  Yeay!
 app.listen(PORT, () => {

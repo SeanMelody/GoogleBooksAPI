@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import API from "../utils/API"
 import Search from "./Search/Search"
+import { Link } from "react-router-dom";
 
 
 // Export default here instead of below!

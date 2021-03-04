@@ -12,7 +12,7 @@ export default class Main extends Component {
         search: ""
     }
 
-    // Component did mount to get the API request from Utils/API
+    // Component did mount to get the API request from Utils / API
     componentDidMount() {
         //Call the API search function from Utils/API
         API.APISearch()
@@ -24,47 +24,53 @@ export default class Main extends Component {
                 // Gotta check them errors!
             }).catch(err => console.log(err))
     }
-
-    // searchBooks = search => {
-    //     API.APISearch(search)
-    //         .then(res => this.setState({ result: res.data.items }))
-    //         .catch(err => console.log(err));
-    // };
+    // componentDidMount() {
+    //     this.searchBooks("Harry+Potter");
+    // }
 
 
-    // handleInputChange = event => {
-    //     const value = event.target.value;
-    //     const name = event.target.name;
-    //     this.setState({
-    //         [name]: value
-    //     });
-    // };
-
-    // // When the form is submitted, search the OMDB API for the value of `this.state.search`
-    // handleFormSubmit = event => {
-    //     event.preventDefault();
-    //     this.searchBooks(this.state.search);
-    //     console.log(this.state.search)
-    // };
+    searchBooks = query => {
+        API.APISearch(query)
+            .then(res => this.setState({ result: res.data.items }))
+            .catch(err => console.log(err));
+    };
 
     // Handle input change to get the data from the search bar and make it render
     handleInputChange = event => {
-        if (event.target.name === "search") {
-            // Lower case it just incase
-            const searchValue = event.target.value.toLowerCase();
-            // Set the state
-            this.setState({
-                search: searchValue
-            })
-        }
-    }
+        const value = event.target.value;
+        const name = event.target.name;
+        this.setState({
+            [name]: value
+        });
+    };
+
+    // When the form is submitted, search the API for the value of `this.state.search`
+    handleFormSubmit = event => {
+        event.preventDefault();
+        this.searchBooks(this.state.search);
+        console.log(this.state.search)
+        console.log("line48")
+    };
+
+    // Handle input change to get the data from the search bar and make it render
+    // handleInputChange = event => {
+    //     if (event.target.name === "search") {
+    //         // Lower case it just incase
+    //         const searchValue = event.target.value.toLowerCase();
+    //         // Set the state
+    //         this.setState({
+    //             search: searchValue
+    //         })
+    //     }
+    // }
 
 
     render() {
         return (
             <div>
                 <Search handleInputChange={this.handleInputChange}
-                    search={this.state.search} />
+                    handleFormSubmit={this.handleFormSubmit}
+                    value={this.state.search} />
             </div>
         )
     }

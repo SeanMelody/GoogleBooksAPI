@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Main from "./Components/Main";
-import Search from "./Components/Search/Search";
+
 
 function App() {
   return (

@@ -2,20 +2,21 @@
 import axios from "axios";
 
 // set the api key to a const
-const APIKEY = "&key=AIzaSyCKu9i_PLjFCu47B2YF3PQAK7E2trvFyjk"
+
 
 // test search
 // let search = "Apathy"
 
 // set the base requestURL
-const requestUrl = "https://www.googleapis.com/books/v1/volumes?q=harry+potter&key="
+const requestUrl = "https://www.googleapis.com/books/v1/volumes?q="
 
-// export function for the axios API calss
+// export function for the axios API call
 export default {
     // Set it to a function
-    APISearch: function () {
-        // console.log(requestUrl + search + APIKEY)
-        return axios.get(requestUrl + APIKEY);
+    APISearch: function (query) {
+        // let search = "Apathy"
+        console.log(requestUrl + query + APIKEY)
+        return axios.get(requestUrl + query + APIKEY);
     }
 };
 

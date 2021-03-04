@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import API from "../utils/API"
 import Search from "./Search/Search"
 
+
 // Export default here instead of below!
 export default class Main extends Component {
 
@@ -79,24 +80,38 @@ export default class Main extends Component {
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit} />
 
-                <div>
-                    {this.state.result.map(book =>
-                        <ul key={book.id}>
-                            <li>
-                                {book.volumeInfo.title}
-                                {console.log(book)}
-                                {console.log("line88")}
-                            </li>
+                <div className="table-responsive">
+                    <table className="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                {/* <th>Image</th> */}
+                                <th>Title</th>
+                                <th>Authors</th>
+                                <th>Link</th>
+                                {/* <th>Description</th> */}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.result.map(book =>
+                                <tr key={book.id}>
+                                    {/* <td><img src={book.volumeInfo.imageLinks.smallThumbnail} /></td> */}
+                                    <td>{book.volumeInfo.title}</td>å
+                                    <td>{book.volumeInfo.authors}</td>
+                                    {/* <td>< a href={book.volumeInfo.previewLink} /></td> */}
+                                    {/* <td>{book.volumeInfo.description}</td> */}
+                                    <td><button onClick={() => console.log(book.volumeInfo.title)}>View</button></td>
+                                    <td><button onClick={() => console.log(book.volumeInfo.title)}>Save</button></td>
+                                </tr>
 
 
-                        </ul>
-
-                    )}
+                            )}
+                        </tbody>
+                    </table>
                 </div>
                 {/* <p>{this.state.result.volumeInfo.title}</p> */}
                 <h5>End of list</h5>
 
-            </div>
+            </div >
         )
     }
 }

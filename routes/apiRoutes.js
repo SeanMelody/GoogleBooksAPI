@@ -14,4 +14,3 @@ router.get("/seanisthebest", (req, res) => {
 
 module.exports = router
 
-// API KEY = AIzaSyCKu9i_PLjFCu47B2YF3PQAK7E2trvFyjk

@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <h1>Google Books API</h1>
       <Main />
-      <Search />
+      {/* <Search /> */}
     </div>
   );
 }

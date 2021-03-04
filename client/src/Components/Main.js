@@ -1,6 +1,7 @@
 // Import all the necessary goodness!
 import React, { Component } from 'react'
 import API from "../utils/API"
+import Search from "./Search/Search"
 
 // Export default here instead of below!
 export default class Main extends Component {
@@ -24,11 +25,46 @@ export default class Main extends Component {
             }).catch(err => console.log(err))
     }
 
+    // searchBooks = search => {
+    //     API.APISearch(search)
+    //         .then(res => this.setState({ result: res.data.items }))
+    //         .catch(err => console.log(err));
+    // };
+
+
+    // handleInputChange = event => {
+    //     const value = event.target.value;
+    //     const name = event.target.name;
+    //     this.setState({
+    //         [name]: value
+    //     });
+    // };
+
+    // // When the form is submitted, search the OMDB API for the value of `this.state.search`
+    // handleFormSubmit = event => {
+    //     event.preventDefault();
+    //     this.searchBooks(this.state.search);
+    //     console.log(this.state.search)
+    // };
+
+    // Handle input change to get the data from the search bar and make it render
+    handleInputChange = event => {
+        if (event.target.name === "search") {
+            // Lower case it just incase
+            const searchValue = event.target.value.toLowerCase();
+            // Set the state
+            this.setState({
+                search: searchValue
+            })
+        }
+    }
+
 
     render() {
         return (
             <div>
-
+                <Search handleInputChange={this.handleInputChange}
+                    search={this.state.search} />
             </div>
         )
     }

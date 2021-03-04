@@ -12,7 +12,7 @@ const router = require("express").Router()
 
 
 // Test get request, sends back success
-router.get("/seanisthebest", (req, res) => {
+router.get("/test", (req, res) => {
     res.send({ msg: "success" });
 });
 
@@ -29,6 +29,8 @@ router.get("/seanisthebest", (req, res) => {
 //         res.status(500).send('Error Getting Books- Whoops');
 //     }
 // });
+
+
 
 
 // Need GET /books to get all the saved books

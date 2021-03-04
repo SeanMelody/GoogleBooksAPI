@@ -5,7 +5,7 @@ const app = express();
 const mongoose = require("mongoose");
 
 //Port 5001 cause I'm crazy!
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5055;
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -19,11 +19,13 @@ if (process.env.NODE_ENV === "production") {
 // API Routes start with API and live at apiRoutes.js
 app.use("/api", require("./routes/apiRoutes"))
 
+
+//THIS IS HICCUPING MY API ROUTES AND SERVER???
 // Send every other request to the React app
 // Define any API routes before this runs
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {

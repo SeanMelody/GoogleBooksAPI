@@ -1,5 +1,6 @@
 // const axios = require("axios")
 const router = require("express").Router()
+const db = require("../models")
 
 // dotenv const to hide API keys=
 // const dotenv = require('dotenv').config()
@@ -15,6 +16,10 @@ const router = require("express").Router()
 router.get("/test", (req, res) => {
     res.send({ msg: "success" });
 });
+
+// router.get("all", (req, res) => {
+//     res.
+// })
 
 // App.put to search the GoogleBooks API Using .env
 // router.get('/bookSearch', async (req, res) => {

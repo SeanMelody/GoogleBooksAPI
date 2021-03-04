@@ -8,7 +8,7 @@ export default class Main extends Component {
 
     // Set state for the API results, the search form and the sort order!
     state = {
-        results: [],
+        result: [],
         search: ""
     }
 
@@ -79,8 +79,41 @@ export default class Main extends Component {
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit} />
 
+                <div>
+                    {this.state.result.map(book =>
+                        <ul key={book.id}>
+                            <li>
+                                {book.volumeInfo.title}
+                                {console.log(book)}
+                                {console.log("line88")}
+                            </li>
+
+
+                        </ul>
+
+                    )}
+                </div>
+                {/* <p>{this.state.result.volumeInfo.title}</p> */}
+                <h5>End of list</h5>
+
             </div>
         )
     }
 }
 
+// {books.length ? (
+//     <List>
+//       {books.map(book => (
+//         <ListItem key={book._id}>
+//           <Link to={"/books/" + book._id}>
+//             <strong>
+//               {book.title} by {book.author}
+//             </strong>
+//           </Link>
+//           <DeleteBtn onClick={() => deleteBook(book._id)} />
+//         </ListItem>
+//       ))}
+//     </List>
+//   ) : (
+//     <h3>No Results to Display</h3>
+//   )}

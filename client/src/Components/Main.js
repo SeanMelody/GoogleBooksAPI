@@ -96,11 +96,17 @@ export default class Main extends Component {
                             {this.state.result.map(book =>
                                 <tr key={book.id}>
                                     {/* <td><img src={book.volumeInfo.imageLinks.smallThumbnail} /></td> */}
-                                    <td>{book.volumeInfo.title}</td>å
+                                    <td>{book.volumeInfo.title}</td>
                                     <td>{book.volumeInfo.authors}</td>
                                     {/* <td>< a href={book.volumeInfo.previewLink} /></td> */}
                                     {/* <td>{book.volumeInfo.description}</td> */}
-                                    <td><button onClick={() => console.log(book.volumeInfo.title)}>View</button></td>
+                                    <td> <a href={book.volumeInfo.previewLink}><button>View</button></a></td>
+
+                                    {/* <td>
+                                        <Link to="/">
+                                            <p>Save</p>
+                                        </Link>
+                                    </td> */}
                                     <td><button onClick={() => console.log(book.volumeInfo.title)}>Save</button></td>
                                 </tr>
 
@@ -110,7 +116,7 @@ export default class Main extends Component {
                     </table>
                 </div>
                 {/* <p>{this.state.result.volumeInfo.title}</p> */}
-                <h5>End of list</h5>
+                <h5> End of list</h5>
 
             </div >
         )

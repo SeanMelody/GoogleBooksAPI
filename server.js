@@ -3,6 +3,8 @@ const express = require("express");
 // const path = require("path");
 const app = express();
 const mongoose = require("mongoose");
+// require the databse models folder (index and then workout.js)
+const db = require("./models");
 
 //Port 5001 cause I'm crazy!
 const PORT = process.env.PORT || 5055;

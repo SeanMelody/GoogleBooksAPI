@@ -85,7 +85,7 @@ export default class Main extends Component {
                                     <td>{book.volumeInfo.title}</td>
                                     <td>{book.volumeInfo.authors}</td>
                                     <td> <a href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer"><button>View</button></a></td>
-                                    <button onClick={() => console.log(book.id)}>Save</button>
+                                    <td><button onClick={() => console.log(book.id)}>Save</button></td>
                                     {/* <td>
                                         <Link to="/saved">
                                             <button>Save {console.log(book.id)}</button>

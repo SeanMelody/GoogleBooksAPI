@@ -8,44 +8,37 @@ import { Link } from "react-router-dom";
 // Export default here instead of below!
 export default class Main extends Component {
 
-    // Set state for the API results, the search form and the sort order!
+    // Set state for the API results, and the search form!
     state = {
         result: [],
         search: ""
     }
 
-    // Component did mount to get the API request from Utils / API
+    // Component did mount to get the API request from Utils / API for Harry Potter
     componentDidMount() {
         this.searchBooks("Harry+Potter");
-        //Call the API search function from Utils/API
-        // API.APISearch()
-        //     //Get the data set it to state and console log it
-        //     .then(res => {
-        //         // console.log(res.data.items)
-        //         this.setState({ results: res.data.items })
-        //         console.log(this.state.results)
-        //         // Gotta check them errors!
-        //     }).catch(err => console.log(err))
     }
-    // componentDidMount() {
-    //     this.searchBooks("Harry+Potter");
-    // }
 
 
+    // Search Books function for using the API to search for books
     searchBooks = query => {
         API.APISearch(query)
             .then(res => {
+                // Set the results to state
                 this.setState({ result: res.data.items })
+                //console.log it so I know what is retunred
                 console.log(res.data.items)
             })
-
+            // Gotta catch them errors!
             .catch(err => console.log(err));
     };
 
     // Handle input change to get the data from the search bar and make it render
     handleInputChange = event => {
+        // Set value and name to state
         const value = event.target.value;
         const name = event.target.name;
+        // Set the state
         this.setState({
             [name]: value
         });
@@ -53,52 +46,44 @@ export default class Main extends Component {
 
     // When the form is submitted, search the API for the value of `this.state.search`
     handleFormSubmit = event => {
+        // Gotta prevent the default!
         event.preventDefault();
+        // call the searchBooks function!
         this.searchBooks(this.state.search);
+        // Console log what is searched
         console.log(this.state.search)
-        console.log("line48")
-
     };
 
-    // Handle input change to get the data from the search bar and make it render
-    // handleInputChange = event => {
-    //     if (event.target.name === "search") {
-    //         // Lower case it just incase
-    //         const searchValue = event.target.value.toLowerCase();
-    //         // Set the state
-    //         this.setState({
-    //             search: searchValue
-    //         })
-    //     }
-    // }
-
-
+    // Render all the data using React!
     render() {
+        //Return it all
         return (
             <div>
+                {/* Search form so user can search books */}
                 <Search
                     value={this.state.search}
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit} />
 
+                {/* Table for displaying the searched books! */}
                 <div className="table-responsive">
                     <table className="table table-striped table-hover">
+                        {/* Talbe descriptions */}
                         <thead>
                             <tr>
                                 <th>Image</th>
                                 <th>Title</th>
                                 <th>Authors</th>
                                 <th>Link</th>
-                                {/* <th>Description</th> */}
                             </tr>
                         </thead>
                         <tbody>
+                            {/* Map through the results from the API */}
                             {this.state.result.map(book =>
                                 <tr key={book.id}>
                                     <td><img src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=5&source=gbs_api`} /></td>
                                     <td>{book.volumeInfo.title}</td>
                                     <td>{book.volumeInfo.authors}</td>
-                                    {/* <td>{book.volumeInfo.description}</td> */}
                                     <td> <a href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer"><button>View</button></a></td>
                                     <button onClick={() => console.log(book.id)}>Save</button>
                                     {/* <td>
@@ -114,7 +99,7 @@ export default class Main extends Component {
                         </tbody>
                     </table>
                 </div>
-                {/* <p>{this.state.result.volumeInfo.title}</p> */}
+
                 <h5> End of list</h5>
 
             </div >
@@ -122,19 +107,3 @@ export default class Main extends Component {
     }
 }
 
-// {books.length ? (
-//     <List>
-//       {books.map(book => (
-//         <ListItem key={book._id}>
-//           <Link to={"/books/" + book._id}>
-//             <strong>
-//               {book.title} by {book.author}
-//             </strong>
-//           </Link>
-//           <DeleteBtn onClick={() => deleteBook(book._id)} />
-//         </ListItem>
-//       ))}
-//     </List>
-//   ) : (
-//     <h3>No Results to Display</h3>
-//   )}

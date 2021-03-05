@@ -15,15 +15,5 @@ const bookSchema = new Schema({
 const Book = mongoose.model("Book", bookSchema);
 
 
-// db.Book.insert(
-//     {
-//         title: 'Meow',
-//         author: "Arya",
-//         description: "I wanna Play",
-//         image: "none",
-//         link: "none"
-//     }
-// )
-
 // module.export it!
 module.exports = Book;

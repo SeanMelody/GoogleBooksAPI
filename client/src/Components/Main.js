@@ -85,7 +85,7 @@ export default class Main extends Component {
                     <table className="table table-striped table-hover">
                         <thead>
                             <tr>
-                                {/* <th>Image</th> */}
+                                <th>Image</th>
                                 <th>Title</th>
                                 <th>Authors</th>
                                 <th>Link</th>
@@ -98,17 +98,15 @@ export default class Main extends Component {
                                     <td><img src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=5&source=gbs_api`} /></td>
                                     <td>{book.volumeInfo.title}</td>
                                     <td>{book.volumeInfo.authors}</td>
-                                    {/* <td>href={book.volumeInfo.imageLinks.thumbnail}</td> */}
-                                    {/* <td>< a href={book.volumeInfo.previewLink} /></td> */}
                                     {/* <td>{book.volumeInfo.description}</td> */}
                                     <td> <a href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer"><button>View</button></a></td>
 
-                                    {/* <td>
-                                        <Link to="/">
-                                            <p>Save</p>
+                                    <td>
+                                        <Link to="/saved">
+                                            <button>Save</button>
                                         </Link>
-                                    </td> */}
-                                    <td><button onClick={() => console.log(book.volumeInfo.title)}>Save</button></td>
+                                    </td>
+                                    {/* <td><button onClick={() => console.log(book.volumeInfo.title)}>Save</button></td> */}
                                 </tr>
 
 

@@ -95,12 +95,13 @@ export default class Main extends Component {
                         <tbody>
                             {this.state.result.map(book =>
                                 <tr key={book.id}>
-                                    {/* <td><img src={book.volumeInfo.imageLinks.smallThumbnail} /></td> */}
+                                    <td><img src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=5&source=gbs_api`} /></td>
                                     <td>{book.volumeInfo.title}</td>
                                     <td>{book.volumeInfo.authors}</td>
+                                    {/* <td>href={book.volumeInfo.imageLinks.thumbnail}</td> */}
                                     {/* <td>< a href={book.volumeInfo.previewLink} /></td> */}
                                     {/* <td>{book.volumeInfo.description}</td> */}
-                                    <td> <a href={book.volumeInfo.previewLink}><button>View</button></a></td>
+                                    <td> <a href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer"><button>View</button></a></td>
 
                                     {/* <td>
                                         <Link to="/">

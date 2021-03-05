@@ -44,10 +44,10 @@ router.post("/books", (req, res) => {
 })
 
 router.delete("/books/:id", (req, res) => {
-
-    db.Book.delete({})
+    console.log(req.params.id)
+    db.Book.deleteOne({ "_id": req.params.id })
         .then(dbBook => {
-            console.log("new delete"),
+            console.log("book deleted"),
                 res.json(dbBook)
         })
         .catch(err => {

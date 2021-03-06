@@ -32,6 +32,7 @@ const deleteBook = (id) => {
         .then((data) => {
             console.log(data)
         })
+    window.location.reload()
 
 }
 

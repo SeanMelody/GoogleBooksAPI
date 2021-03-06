@@ -89,7 +89,7 @@ export default class Main extends Component {
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data)
-                    console.log(`${book.title} saved`)
+                    console.log(`${book.volumeInfo.title} saved`)
                 })
         }
         //Return it all
@@ -111,7 +111,6 @@ export default class Main extends Component {
                                 <th>Title</th>
                                 <th>Authors</th>
                                 <th>Link</th>
-                                <th>Save Book</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -122,7 +121,13 @@ export default class Main extends Component {
                                     <td>{book.volumeInfo.title}</td>
                                     <td>{book.volumeInfo.authors}</td>
                                     <td> <a href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer"><button>View</button></a></td>
-                                    <td><button onClick={() => saveBook(book)} >saveBook()</button></td>
+                                    <td><button onClick={() => saveBook(book)} >saveBook()</button><button onClick={() => console.log(book.id)} >ID</button></td>
+                                    {/* <td>
+                                        <Link to="/saved">
+                                            <button>Save {console.log(book.id)}</button>
+                                        </Link>
+                                    </td> */}
+                                    {/* <td><button onClick={() => console.log(book.volumeInfo.title)}>Save</button></td> */}
                                 </tr>
 
 

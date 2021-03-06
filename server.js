@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 // require the databse models folder (index and then workout.js)
 const db = require("./models");
 
-//Port 5001 cause I'm crazy!
+//Port 5055 cause I'm crazy!
 const PORT = process.env.PORT || 5055;
 
 // Middleware
@@ -22,12 +22,10 @@ if (process.env.NODE_ENV === "production") {
 app.use("/api", require("./routes/apiRoutes"))
 
 
-//THIS IS HICCUPING MY API ROUTES AND SERVER???
 // Send every other request to the React app
-// Define any API routes before this runs
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {

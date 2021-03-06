@@ -3,6 +3,7 @@ import "./App.css";
 import Main from "./Components/Main";
 import Saved from "./Components/Saved/Saved"
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Footer from "./Components/Footer/Footer";
 // import Nav from "./Components/Nav/Nav";
 // import Search from "./Components/Search/Search"
 // import axios from "axios"
@@ -82,7 +83,7 @@ function App() {
 
         {/* <Search /> */}
       </BrowserRouter>
-
+      <Footer />
     </div>
   );
 }

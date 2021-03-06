@@ -1,6 +1,6 @@
 // Required Consts!
 const express = require("express");
-// const path = require("path");
+const path = require("path");
 const app = express();
 const mongoose = require("mongoose");
 // require the databse models folder (index and then workout.js)
@@ -24,7 +24,7 @@ app.use("/api", require("./routes/apiRoutes"))
 
 // Send every other request to the React app
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
 
 

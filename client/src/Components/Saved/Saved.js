@@ -1,24 +1,39 @@
 import React, { Component } from 'react'
 
 // let savedBooks = []
-
-fetch('/api/books', {
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    // Json that response
-})
-    .then((response) => response.json())
-    // Then get the data
-    .then((data) => {
-        // For Each loop to loop through the database and get the stock and id
-        // data.forEach(({ id, stock }) => {
-        // })
-        console.log(data)
-        let savedBooks = data
+const getBooks = () => {
+    fetch('/api/books', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        // Json that response
     })
-// console.log(savedBooks)
+        .then((response) => response.json())
+        // Then get the data
+        .then((data) => {
+            // For Each loop to loop through the database and get the stock and id
+            // data.forEach(({ id, stock }) => {
+            // })
+            console.log(data)
+            // let savedBooks = data
+        })
+}
+getBooks()
+
+
+
+const deleteBook = (id) => {
+    fetch(`/api/books/${id}`, {
+        method: 'DELETE'
+        // Json that response
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+        })
+
+}
 
 
 // Export default here instead of below!

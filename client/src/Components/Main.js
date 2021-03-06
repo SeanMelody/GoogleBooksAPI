@@ -5,6 +5,7 @@ import Search from "./Search/Search"
 // import { Link } from "react-router-dom";
 
 
+
 // Export default here instead of below!
 export default class Main extends Component {
 
@@ -54,8 +55,43 @@ export default class Main extends Component {
         console.log(this.state.search)
     };
 
+    // saveBook = (book) => {
+
+    //     fetch(`/api/books/`, {
+    //         method: 'POST',
+    //         body: JSON.stringify(book),
+    //         headers: { "Content-Type": "application/json" }
+    //     })
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             console.log(`${book.title} added`)
+    //         })
+    // }
+
     // Render all the data using React!
     render() {
+
+        // Save book to the Mongoose database
+        const saveBook = (book) => {
+            console.log(book)
+            let newSave = {
+                title: book.volumeInfo.title,
+                authors: book.volumeInfo.authors[0],
+                description: book.volumeInfo.description,
+                image: book.volumeInfo.imageLinks.smallThumbnail,
+                link: book.volumeInfo.previewLink
+            }
+            fetch(`/api/books`, {
+                method: 'POST',
+                body: JSON.stringify(newSave),
+                headers: { "Content-Type": "application/json" }
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data)
+                    console.log(`${book.title} saved`)
+                })
+        }
         //Return it all
         return (
             <div>
@@ -68,7 +104,7 @@ export default class Main extends Component {
                 {/* Table for displaying the searched books! */}
                 <div className="table-responsive">
                     <table className="table table-striped table-hover">
-                        {/* Talbe descriptions */}
+                        {/* Table descriptions */}
                         <thead>
                             <tr>
                                 <th>Image</th>
@@ -85,13 +121,7 @@ export default class Main extends Component {
                                     <td>{book.volumeInfo.title}</td>
                                     <td>{book.volumeInfo.authors}</td>
                                     <td> <a href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer"><button>View</button></a></td>
-                                    <td><button onClick={() => console.log(book.id)}>Save</button></td>
-                                    {/* <td>
-                                        <Link to="/saved">
-                                            <button>Save {console.log(book.id)}</button>
-                                        </Link>
-                                    </td> */}
-                                    {/* <td><button onClick={() => console.log(book.volumeInfo.title)}>Save</button></td> */}
+                                    <td><button onClick={() => saveBook(book)} >saveBook()</button></td>
                                 </tr>
 
 

@@ -16,7 +16,7 @@ router.get("/books", (req, res) => {
 // POST /books to send a saved book to the database
 router.post("/books", (req, res) => {
     const savedBook = req.body
-    db.Book.insertMany(savedBook)
+    db.Book.create(savedBook)
         .then(dbBook => {
             console.log("Book Saved"),
                 res.json(dbBook)

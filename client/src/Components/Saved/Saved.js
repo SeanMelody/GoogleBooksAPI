@@ -97,12 +97,12 @@ const Saved = (props) => {
                         </tr> */}
 
                         {props.savedBooks.map((savedBook) => (
-                            <tr key={savedBook.id}>
+                            <tr key={savedBook._id}>
                                 <td><img src={savedBook.image} alt="book cover" /></td>
                                 <td>{savedBook.title}</td>
                                 <td>{savedBook.authors}</td>
                                 <td> <a href={savedBook.link} target="_blank" rel="noopener noreferrer"><button>View</button></a></td>
-                                {/* <td><button onClick={() => saveBook(book)} >saveBook()</button></td> */}
+                                <td><button onClick={() => deleteBook(savedBook._id)} >DeleteBook</button></td>
                             </tr>
                         ))}
 

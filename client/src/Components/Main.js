@@ -17,7 +17,8 @@ export default class Main extends Component {
 
     // Component did mount to get the API request from Utils / API for Harry Potter
     componentDidMount() {
-        this.searchBooks("Harry+Potter");
+        this.searchBooks("");
+        // this.searchBooks("Harry+Potter");
     }
 
 
@@ -130,11 +131,12 @@ export default class Main extends Component {
                                     {/* <td><button onClick={() => console.log(book.volumeInfo.title)}>Save</button></td> */}
                                 </tr>
 
-
+                                // : <tr><h4>Search for a book</h4></tr>
                             )}
                         </tbody>
                     </table>
                 </div>
+
 
                 <h5> End of list</h5>
 

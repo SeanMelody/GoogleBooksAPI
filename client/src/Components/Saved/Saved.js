@@ -111,6 +111,34 @@ const Saved = (props) => {
                 </table>
             </div>
 
+            <div className="container">
+
+                {/* Map through the results from the API */}
+                {/* {this.state.result.map(book => */}
+                {/* <tr>
+                            <td>Saved Book Image</td>
+                            <td>Saved Book Title</td>
+                            <td>Saved Book Authors</td>
+                            <td><button onClick={() => console.log("View Button")}>View</button></td>
+                            <td><button onClick={() => console.log("Delete Button")}>Delete</button></td>
+                        </tr> */}
+
+                {props.savedBooks.map((savedBook) => (
+                    <div className="card" key={savedBook._id}>
+                        <div className="card-title" ><h4>{savedBook.title}</h4></div>
+                        <div className="card-body row">
+                            <img className="col-md-2" src={savedBook.image} alt="book cover" />
+                            <h3 className="col-md-2">{savedBook.authors}</h3>
+                            <p className="col-md-6">{savedBook.description}</p>
+                            <a href={savedBook.link} target="_blank" rel="noopener noreferrer"><button className="btn btn-outline-primary">View</button></a>
+                            <button onClick={() => deleteBook(savedBook._id)} className="btn btn-outline-danger">DeleteBook</button>
+                        </div>
+                    </div>
+                ))}
+
+
+            </div>
+
             <h5> End of list</h5>
 
 

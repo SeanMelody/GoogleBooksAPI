@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import API from "../utils/API"
 import Search from "./Search/Search"
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 
 // Export default here instead of below!
@@ -81,7 +81,7 @@ export default class Main extends Component {
                             {/* Map through the results from the API */}
                             {this.state.result.map(book =>
                                 <tr key={book.id}>
-                                    <td><img src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=5&source=gbs_api`} /></td>
+                                    <td><img src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=5&source=gbs_api`} alt="book cover" /></td>
                                     <td>{book.volumeInfo.title}</td>
                                     <td>{book.volumeInfo.authors}</td>
                                     <td> <a href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer"><button>View</button></a></td>

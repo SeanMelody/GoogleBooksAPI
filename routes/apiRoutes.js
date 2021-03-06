@@ -13,24 +13,7 @@ router.get("/books", (req, res) => {
         })
 });
 
-// db.Book.insertOne(
-//     {
-//         title: 'Meow',
-//         author: "Arya",
-//         description: "I wanna Play",
-//         image: "none",
-//         link: "none"
-//     }
-// )
-
-// var newBook = {
-//     title: 'Meow',
-//     author: "Arya",
-//     description: "I wanna Play",
-//     image: "none",
-//     link: "none"
-// };
-
+// POST /books to send a saved book to the database
 router.post("/books", (req, res) => {
     const savedBook = req.body
     db.Book.insertMany(savedBook)
@@ -43,6 +26,7 @@ router.post("/books", (req, res) => {
         })
 })
 
+// DELETE /books/:id by id for deleting a book from the database
 router.delete("/books/:id", (req, res) => {
     console.log(req.params.id)
     db.Book.deleteOne({ "_id": req.params.id })
@@ -55,30 +39,7 @@ router.delete("/books/:id", (req, res) => {
         })
 })
 
-// POST / books to save a book
-// Post request to send the data to the database
-// router.post("/books", (req, res) => {
-//     db.Book.insert(newBook)
-//         .then(dbBook => {
-//             res.json(dbBook);
-//         })
-//         .catch(err => {
-//             res.status(404).json(err);
-//         });
-// });
 
-// Router.delete to delete a book
-// router.delete("books/:id", (req, res) => {
-//     // Set the condition
-//     const condition = req.params.id
-//     // Use the burger deleteone function
-//     burger.deleteOne(condition, (res) => {
-//         if (res.affectedRows === 0) {
-//             return res.status(404).end();
-//         }
-//         res.status(200).end;
-//     })
-// })
 
 
 // dotenv const to hide API keys=
@@ -96,32 +57,7 @@ router.get("/test", (req, res) => {
     res.send({ msg: "success" });
 });
 
-// router.get("all", (req, res) => {
-//     res.
-// })
 
-// App.put to search the GoogleBooks API Using .env
-// router.get('/bookSearch', async (req, res) => {
-//     // const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${req.body.stock}&apikey=${stockApiKey}`;
-//     const url = `https://www.googleapis.com/books/v1/volumes?q=${req.body.search}${GoogleKEY}`
-//     //Async and await
-//     try {
-//         const books = await axios.get(url);
-//         res.json(books.data);
-//     } catch (error) {
-//         console.log(error.message);
-//         res.status(500).send('Error Getting Books- Whoops');
-//     }
-// });
-
-
-
-
-// Need GET /books to get all the saved books
-
-// Need POST / books to save a book
-
-// Need DELETE / books/:id to delete using _id
 
 module.exports = router
 

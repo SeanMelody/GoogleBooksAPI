@@ -111,6 +111,7 @@ export default class Main extends Component {
                                 <th>Title</th>
                                 <th>Authors</th>
                                 <th>Link</th>
+                                <th>Save Book</th>
                             </tr>
                         </thead>
                         <tbody>

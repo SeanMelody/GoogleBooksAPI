@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Main from "./Components/Main";
-import Saved from "./Components/Saved/Saved"
+import Saved from "./Pages/Saved/Saved"
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header"

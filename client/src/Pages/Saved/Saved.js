@@ -74,43 +74,6 @@ const Saved = (props) => {
     return (
         <div>
             <h1>Saved List</h1>
-            <div className="table-responsive">
-                <table className="table table-striped table-hover">
-                    {/* Talbe descriptions */}
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Authors</th>
-                            <th>View</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* Map through the results from the API */}
-                        {/* {this.state.result.map(book => */}
-                        {/* <tr>
-                            <td>Saved Book Image</td>
-                            <td>Saved Book Title</td>
-                            <td>Saved Book Authors</td>
-                            <td><button onClick={() => console.log("View Button")}>View</button></td>
-                            <td><button onClick={() => console.log("Delete Button")}>Delete</button></td>
-                        </tr> */}
-
-                        {props.savedBooks.map((savedBook) => (
-                            <tr key={savedBook._id}>
-                                <td><img src={savedBook.image} alt="book cover" /></td>
-                                <td>{savedBook.title}</td>
-                                <td>{savedBook.authors}</td>
-                                <td> <a href={savedBook.link} target="_blank" rel="noopener noreferrer"><button>View</button></a></td>
-                                <td><button onClick={() => deleteBook(savedBook._id)} >DeleteBook</button></td>
-                            </tr>
-                        ))}
-
-                    </tbody>
-                </table>
-            </div>
-
             <div className="container">
 
                 {/* Map through the results from the API */}
@@ -147,3 +110,41 @@ const Saved = (props) => {
 
 }
 export default Saved
+
+// Table 
+    // < div className = "table-responsive" >
+    //     <table className="table table-striped table-hover">
+    //         /* Talbe descriptions */
+    //         <thead>
+    //             <tr>
+    //                 <th>Image</th>
+    //                 <th>Title</th>
+    //                 <th>Authors</th>
+    //                 <th>View</th>
+    //                 <th>Delete</th>
+    //             </tr>
+    //         </thead>
+    //         <tbody>
+    //             /* Map through the results from the API */
+    //             /* {this.state.result.map(book => */
+    //         /* <tr>
+    //                         <td>Saved Book Image</td>
+    //                         <td>Saved Book Title</td>
+    //                         <td>Saved Book Authors</td>
+    //                         <td><button onClick={() => console.log("View Button")}>View</button></td>
+    //                         <td><button onClick={() => console.log("Delete Button")}>Delete</button></td>
+    //                     </tr> */
+
+    //             {props.savedBooks.map((savedBook) => (
+    //                 <tr key={savedBook._id}>
+    //                     <td><img src={savedBook.image} alt="book cover" /></td>
+    //                     <td>{savedBook.title}</td>
+    //                     <td>{savedBook.authors}</td>
+    //                     <td> <a href={savedBook.link} target="_blank" rel="noopener noreferrer"><button>View</button></a></td>
+    //                     <td><button onClick={() => deleteBook(savedBook._id)} >DeleteBook</button></td>
+    //                 </tr>
+    //             ))}
+
+    //         </tbody>
+    //     </table>
+    //         </div >

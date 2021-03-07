@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 function Nav() {
     return (
         <nav>
+            <h1>Google Book API</h1>
             <Link to="/">
                 <p>Search Books</p>
             </Link>

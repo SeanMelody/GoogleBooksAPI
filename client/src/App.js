@@ -1,11 +1,11 @@
+// Import all the goodness!
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import "./App.css";
 import Main from "./Components/Main";
 import Saved from "./Pages/Saved/Saved"
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Footer from "./Components/Footer/Footer";
-import Header from "./Components/Header/Header"
-// import Nav from "./Components/Nav/Nav";
+import Footer from "./Components/Footer/Footer"
+import Nav from "./Components/Nav/Nav";
 // import Search from "./Components/Search/Search"
 // import axios from "axios"
 // import { useEffect } from "react"
@@ -70,14 +70,14 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Google Books API</h1>
-      <Header />
+      {/* <Header /> */}
       <BrowserRouter>
+        <Nav />
         <Switch>
           <Route path="/saved" component={Saved}>
             <Saved savedBooks={savedBooks} />
           </Route>
-          <Route path="/" component={Main} />
+          <Route exact path="/" component={Main} />
           {/* <Route path="/" component={Home} /> */}
         </Switch>
       </BrowserRouter>

@@ -1,4 +1,5 @@
 import React from 'react'
+import Header from '../../Components/Header/Header'
 
 // // let savedBooks = []
 // const getBooks = () => {
@@ -73,7 +74,7 @@ const Saved = (props) => {
 
     return (
         <div>
-            <h1>Saved List</h1>
+            <Header title={"Saved Books"} />
             <div className="container">
 
                 {/* Map through the results from the API */}

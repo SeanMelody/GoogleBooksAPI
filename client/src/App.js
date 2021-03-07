@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import "./App.css";
-import Main from "./Components/Main";
+import Search from "./Components/Search/Search";
 import Saved from "./Pages/Saved/Saved"
 import Footer from "./Components/Footer/Footer"
 import Nav from "./Components/Nav/Nav";
@@ -78,7 +78,7 @@ function App() {
           <Route path="/saved" component={Saved}>
             <Saved savedBooks={savedBooks} />
           </Route>
-          <Route exact path="/" component={Main} />
+          <Route exact path="/" component={Search} />
           {/* <Route path="/" component={Home} /> */}
         </Switch>
       </BrowserRouter>

@@ -1,12 +1,13 @@
 // Import React
 import React from "react";
+import SearchStyles from "./SearchStyles";
 
 // Declare a function for the search bar and bring in props
 const SearchForm = (props) => {
 
     //Return the search form!
     return (
-        <form>
+        <form style={SearchStyles.FormStyles} className="border">
             <div className="row form-group">
                 <div className="col-md-12 mx-auto">
                     {/* <label htmlFor="search">Search:</label> */}

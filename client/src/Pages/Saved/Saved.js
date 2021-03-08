@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../../Components/Header/Header'
+import SavedStyles from "./SavedStyles"
 
 // // let savedBooks = []
 // const getBooks = () => {
@@ -88,7 +89,7 @@ const Saved = (props) => {
                         </tr> */}
 
                 {props.savedBooks.map((savedBook) => (
-                    <div className="card" key={savedBook._id}>
+                    <div style={SavedStyles.Card} className="card" key={savedBook._id}>
                         <div className="card-title" ><h4>{savedBook.title}</h4></div>
                         <div className="card-body row">
                             <img className="col-md-2" src={savedBook.image} alt="book cover" />

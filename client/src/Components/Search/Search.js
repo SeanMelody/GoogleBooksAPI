@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import API from "../../utils/API"
 import Header from '../Header/Header';
 import SearchForm from "./SearchForm"
+import SearchStyles from "./SearchStyles"
 
 
 
@@ -105,10 +106,65 @@ export default class Search extends Component {
                     handleFormSubmit={this.handleFormSubmit}
                 />
 
-                {/* Table for displaying the searched books! */}
-                <div className="table-responsive">
-                    <table className="table table-striped table-hover">
-                        {/* Table descriptions */}
+                <div className="container">
+
+
+                    {/* <ul style={SearchStyles.TitleStyles} className="border-bottom">
+                        <li>Image</li>
+                        <li>Authors</li>
+                        <li>Description</li>
+                        <li>View on Google Books</li>
+                        <li>Save to your List</li>
+                    </ul> */}
+
+                    {this.state.result.map(book =>
+                        <div className="card" key={book.id} style={SearchStyles.Cards}>
+                            <div className="card-body-title row justify-content-around">
+                                <h4 className="col-md-5">{book.volumeInfo.title}</h4>
+
+                                <button className="btn btn-outline-danger">
+                                    <a href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer">
+                                        View on Google Books
+                                    </a>
+                                </button>
+
+                                <button className="btn btn-outline-success"
+                                    onClick={() => saveBook(book)} >Save Book
+                                </button>
+
+                            </div>
+                            <div className="card-body row">
+                                <img className="col-md-2" src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=5&source=gbs_api`} alt="book cover" />
+                                <h5 className="col-md-2">{book.volumeInfo.authors}</h5>
+                                <p className="col-md-8">{book.volumeInfo.description}</p>
+                                {/* <a href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer"><button>View</button></a>
+                                <button onClick={() => saveBook(book)} >saveBook()</button> */}
+                            </div>
+
+                        </div>
+
+
+                    )}
+                    <br></br>
+
+
+
+                </div>
+
+
+
+
+
+
+
+            </div >
+        )
+    }
+}
+
+// Table!
+/* <table className="table table-striped table-hover">
+
                         <thead>
                             <tr>
                                 <th>Image</th>
@@ -118,33 +174,23 @@ export default class Search extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* Map through the results from the API */}
-                            {this.state.result.map(book =>
-                                <tr key={book.id}>
-                                    <td><img src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=5&source=gbs_api`} alt="book cover" /></td>
-                                    <td>{book.volumeInfo.title}</td>
-                                    <td>{book.volumeInfo.authors}</td>
-                                    <td> <a href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer"><button>View</button></a></td>
-                                    <td><button onClick={() => saveBook(book)} >saveBook()</button><button onClick={() => console.log(book.id)} >ID</button></td>
-                                    {/* <td>
-                                        <Link to="/saved">
-                                            <button>Save {console.log(book.id)}</button>
-                                        </Link>
-                                    </td> */}
-                                    {/* <td><button onClick={() => console.log(book.volumeInfo.title)}>Save</button></td> */}
-                                </tr>
+                            */
+                            // {this.state.result.map(book =>
+                            //     <tr key={book.id}>
+                            //         <td><img src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=5&source=gbs_api`} alt="book cover" /></td>
+                            //         <td>{book.volumeInfo.title}</td>
+                            //         <td>{book.volumeInfo.authors}</td>
+                            //         <td> <a href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer"><button>View</button></a></td>
+                            //         <td><button onClick={() => saveBook(book)} >saveBook()</button></td>
+                            //         {/* <td>
+                    //                     <Link to="/saved">
+                    //                         <button>Save {console.log(book.id)}</button>
+                    //                     </Link>
+                    //                 </td> */}
+                    //                 {/* <td><button onClick={() => console.log(book.volumeInfo.title)}>Save</button></td> */}
+                    //             </tr>
 
-                                // : <tr><h4>Search for a book</h4></tr>
-                            )}
-                        </tbody>
-                    </table>
-                </div>
-
-
-                <h5> End of list</h5>
-
-            </div >
-        )
-    }
-}
-
+                    //             // : <tr><h4>Search for a book</h4></tr>
+                    //         )}
+                    //     </tbody>
+                    // </table>

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import "./App.css";
-import Search from "./Components/Search/Search";
+import Search from "./Pages/Search";
 import Saved from "./Pages/Saved/Saved"
 import Footer from "./Components/Footer/Footer"
 import Nav from "./Components/Nav/Nav";

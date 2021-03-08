@@ -1,9 +1,9 @@
 // Import all the necessary goodness!
 import React, { Component } from 'react'
-import API from "../../utils/API"
-import Header from '../Header/Header';
-import SearchForm from "./SearchForm"
-import SearchStyles from "./SearchStyles"
+import API from "../utils/API"
+import Header from '../Components/Header/Header';
+import SearchForm from "../Components/Search/SearchForm"
+import SearchStyles from "../Components/Search/SearchStyles"
 
 
 

@@ -90,21 +90,31 @@ const Saved = (props) => {
 
                 {props.savedBooks.map((savedBook) => (
                     <div style={SavedStyles.Card} className="card" key={savedBook._id}>
-                        <div className="card-title" ><h4>{savedBook.title}</h4></div>
+                        <div className="card-title row justify-content-around" >
+                            <h4 className="col-md-5">{savedBook.title}</h4>
+
+                            <button className="btn btn-outline-primary">
+                                <a href={savedBook.link} target="_blank" rel="noopener noreferrer">
+                                    View on Google Books
+                                </a>
+                            </button>
+
+                            <button className="btn btn-outline-danger"
+                                onClick={() => deleteBook(savedBook._id)}>Delete Book
+                            </button>
+
+                        </div>
                         <div className="card-body row">
                             <img className="col-md-2" src={savedBook.image} alt="book cover" />
                             <h3 className="col-md-2">{savedBook.authors}</h3>
-                            <p className="col-md-6">{savedBook.description}</p>
-                            <a href={savedBook.link} target="_blank" rel="noopener noreferrer"><button className="btn btn-outline-primary">View</button></a>
-                            <button onClick={() => deleteBook(savedBook._id)} className="btn btn-outline-danger">DeleteBook</button>
+                            <p className="col-md-8">{savedBook.description}</p>
                         </div>
                     </div>
                 ))}
 
-
+                <br></br>
             </div>
 
-            <h5> End of list</h5>
 
 
         </div >

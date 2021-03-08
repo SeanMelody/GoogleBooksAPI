@@ -12,10 +12,4 @@ module.exports = {
     FormStyles: {
         padding: "50px"
     },
-
-    Card: {
-        padding: "10px",
-        margin: "5px"
-    }
-
 }

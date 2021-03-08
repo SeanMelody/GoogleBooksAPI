@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // set the api key to a const
-const APIKEY = "&key=&key=AIzaSyCKu9i_PLjFCu47B2YF3PQAK7E2trvFyjk"
+
 
 // set the base requestURL
 const requestUrl = "https://www.googleapis.com/books/v1/volumes?q="

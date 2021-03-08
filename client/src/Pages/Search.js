@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import API from "../utils/API"
 import Header from '../Components/Header/Header';
 import SearchForm from "../Components/Search/SearchForm"
-import SearchStyles from "../Components/Search/SearchStyles"
+import SearchedStyles from "./SearchedStyles"
 
 
 
@@ -19,8 +19,8 @@ export default class Search extends Component {
 
     // Component did mount to get the API request from Utils / API for Harry Potter
     componentDidMount() {
-        this.searchBooks("");
-        // this.searchBooks("Harry+Potter");
+        // this.searchBooks("");
+        this.searchBooks("Harry+Potter");
     }
 
 
@@ -108,18 +108,9 @@ export default class Search extends Component {
 
                 <div className="container">
 
-
-                    {/* <ul style={SearchStyles.TitleStyles} className="border-bottom">
-                        <li>Image</li>
-                        <li>Authors</li>
-                        <li>Description</li>
-                        <li>View on Google Books</li>
-                        <li>Save to your List</li>
-                    </ul> */}
-
                     {this.state.result.map(book =>
-                        <div className="card" key={book.id} style={SearchStyles.Cards}>
-                            <div className="card-body-title row justify-content-around">
+                        <div style={SearchedStyles.Cards} className="card" key={book.id}>
+                            <div className="card-title row justify-content-around">
                                 <h4 className="col-md-5">{book.volumeInfo.title}</h4>
 
                                 <button className="btn btn-outline-danger">
@@ -137,8 +128,7 @@ export default class Search extends Component {
                                 <img className="col-md-2" src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=5&source=gbs_api`} alt="book cover" />
                                 <h5 className="col-md-2">{book.volumeInfo.authors}</h5>
                                 <p className="col-md-8">{book.volumeInfo.description}</p>
-                                {/* <a href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer"><button>View</button></a>
-                                <button onClick={() => saveBook(book)} >saveBook()</button> */}
+
                             </div>
 
                         </div>
@@ -147,14 +137,7 @@ export default class Search extends Component {
                     )}
                     <br></br>
 
-
-
                 </div>
-
-
-
-
-
 
 
             </div >

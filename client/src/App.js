@@ -73,13 +73,11 @@ function App() {
       {/* <Header /> */}
       <BrowserRouter>
         <Nav />
-        <hr></hr>
         <Switch>
           <Route path="/saved" component={Saved}>
             <Saved savedBooks={savedBooks} />
           </Route>
           <Route exact path="/" component={Search} />
-          {/* <Route path="/" component={Home} /> */}
         </Switch>
       </BrowserRouter>
       <Footer />

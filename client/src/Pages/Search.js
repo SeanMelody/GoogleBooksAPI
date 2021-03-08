@@ -1,7 +1,7 @@
 // Import all the necessary goodness!
 import React, { Component } from 'react'
 import API from "../utils/API"
-import Header from '../Components/Header/Header';
+
 import SearchForm from "../Components/Search/SearchForm"
 import SearchedStyles from "./SearchedStyles"
 
@@ -18,10 +18,10 @@ export default class Search extends Component {
     }
 
     // Component did mount to get the API request from Utils / API for Harry Potter
-    componentDidMount() {
-        // this.searchBooks("");
-        this.searchBooks("Harry+Potter");
-    }
+    // componentDidMount() {
+    //     this.searchBooks("");
+    //     // this.searchBooks("Harry+Potter");
+    // }
 
 
     // Search Books function for using the API to search for books
@@ -79,7 +79,7 @@ export default class Search extends Component {
             console.log(book)
             let newSave = {
                 title: book.volumeInfo.title,
-                authors: book.volumeInfo.authors[0],
+                authors: book.volumeInfo.authors,
                 description: book.volumeInfo.description,
                 image: book.volumeInfo.imageLinks.smallThumbnail,
                 link: book.volumeInfo.previewLink
@@ -98,47 +98,54 @@ export default class Search extends Component {
         //Return it all
         return (
             <div>
-                <Header title={"Search For a Book"} />
+
                 {/* Search form so user can search books */}
                 <SearchForm
                     value={this.state.search}
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit}
                 />
+                {this.state.result.length ? (
+                    <div className="container">
 
-                <div className="container">
 
-                    {this.state.result.map(book =>
-                        <div style={SearchedStyles.Cards} className="card" key={book.id}>
-                            <div className="card-title row justify-content-around">
-                                <h4 className="col-md-5">{book.volumeInfo.title}</h4>
+                        {
+                            this.state.result.map(book =>
+                                <div style={SearchedStyles.Cards} className="card" key={book.id}>
+                                    <div className="card-title row justify-content-around">
+                                        <h4 className="col-md-5">{book.volumeInfo.title}</h4>
 
-                                <button className="btn btn-outline-danger">
-                                    <a href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer">
-                                        View on Google Books
+                                        <button className="btn btn-outline-danger links">
+                                            <a className="links"
+                                                href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer">
+                                                View on Google Books
                                     </a>
+                                        </button>
+
+                                        <button style={SearchedStyles.Button}
+                                            className="btn btn-outline-success"
+                                            onClick={() => saveBook(book)} >Save Book
                                 </button>
 
-                                <button className="btn btn-outline-success"
-                                    onClick={() => saveBook(book)} >Save Book
-                                </button>
+                                    </div>
+                                    <div className="card-body row">
+                                        <img style={SearchedStyles.Images} className="col-md-2" src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=5&source=gbs_api`} alt="book cover" />
+                                        <h5 className="col-md-2">{book.volumeInfo.authors}</h5>
+                                        <p className="col-md-8">{book.volumeInfo.description}</p>
 
-                            </div>
-                            <div className="card-body row">
-                                <img className="col-md-2" src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=5&source=gbs_api`} alt="book cover" />
-                                <h5 className="col-md-2">{book.volumeInfo.authors}</h5>
-                                <p className="col-md-8">{book.volumeInfo.description}</p>
+                                    </div>
 
-                            </div>
-
-                        </div>
+                                </div>
 
 
+                            )
+                        }
+                        < br ></br>
+
+                    </div>
+                ) : (
+                        <h3>Please Search For a Book</h3>
                     )}
-                    <br></br>
-
-                </div>
-
 
             </div >
         )

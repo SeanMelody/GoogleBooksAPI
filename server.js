@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const db = require("./models");
 
 //Port 5055 cause I'm crazy!
-const PORT = process.env.PORT || 5055;
+const PORT = process.env.PORT || 5005;
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));

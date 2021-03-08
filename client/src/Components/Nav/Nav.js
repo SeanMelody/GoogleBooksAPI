@@ -9,11 +9,11 @@ function Nav() {
     return (
         <nav style={NavStyles.NavStyles}>
             <h1 style={NavStyles.Title}>Google Book API</h1>
-            <Link to="/">
-                <p style={NavStyles.linkStyles}>Search Books</p>
+            <Link to="/" style={NavStyles.linkStyles}>
+                <p>Search Books</p>
             </Link>
-            <Link to="/saved">
-                <p style={NavStyles.linkStyles}>Saved</p>
+            <Link to="/saved" style={NavStyles.linkStyles}>
+                <p>Saved</p>
             </Link>
 
         </nav>

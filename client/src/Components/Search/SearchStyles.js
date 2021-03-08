@@ -1,15 +1,10 @@
 module.exports = {
-    TitleStyles: {
-        listStyle: "none",
-        height: "5vh", //ViewHeight
-        minHeight: "25px",
-        display: "flex", //Sets items in line
-        alignItems: "center",
-        justifyContent: "space-around", //Puts some spaces between the words in the navbar
-        // boarder: "1px solid black"
-    },
-
     FormStyles: {
-        padding: "50px"
+        padding: "50px",
+        margin: "50px",
+        border: "3px solid black"
     },
+    Button: {
+        color: "black"
+    }
 }

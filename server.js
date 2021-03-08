@@ -3,10 +3,10 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const mongoose = require("mongoose");
-// require the databse models folder (index and then workout.js)
+// require the database models folder (index and then workout.js)
 const db = require("./models");
 
-//Port 5055 cause I'm crazy!
+//Port 5005 cause I'm crazy!
 const PORT = process.env.PORT || 5005;
 
 // Middleware
@@ -27,7 +27,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
 
-
+// Mongoose connect to googlebooks API.  Same as for Atlas
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
   useNewUrlParser: true,
   useUnifiedTopology: true,

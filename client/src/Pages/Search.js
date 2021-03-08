@@ -1,12 +1,8 @@
 // Import all the necessary goodness!
 import React, { Component } from 'react'
 import API from "../utils/API"
-
 import SearchForm from "../Components/Search/SearchForm"
 import SearchedStyles from "./SearchedStyles"
-
-
-
 
 // Export default here instead of below!
 export default class Search extends Component {
@@ -17,13 +13,6 @@ export default class Search extends Component {
         search: ""
     }
 
-    // Component did mount to get the API request from Utils / API for Harry Potter
-    // componentDidMount() {
-    //     this.searchBooks("");
-    //     // this.searchBooks("Harry+Potter");
-    // }
-
-
     // Search Books function for using the API to search for books
     searchBooks = query => {
         API.APISearch(query)
@@ -31,7 +20,7 @@ export default class Search extends Component {
                 // Set the results to state
                 this.setState({ result: res.data.items })
                 //console.log it so I know what is retunred
-                console.log(res.data.items)
+                // console.log(res.data.items)
             })
             // Gotta catch them errors!
             .catch(err => console.log(err));
@@ -55,21 +44,8 @@ export default class Search extends Component {
         // call the searchBooks function!
         this.searchBooks(this.state.search);
         // Console log what is searched
-        console.log(this.state.search)
+        // console.log(this.state.search)
     };
-
-    // saveBook = (book) => {
-
-    //     fetch(`/api/books/`, {
-    //         method: 'POST',
-    //         body: JSON.stringify(book),
-    //         headers: { "Content-Type": "application/json" }
-    //     })
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             console.log(`${book.title} added`)
-    //         })
-    // }
 
     // Render all the data using React!
     render() {
@@ -84,17 +60,20 @@ export default class Search extends Component {
                 image: book.volumeInfo.imageLinks.smallThumbnail,
                 link: book.volumeInfo.previewLink
             }
+            // Send fetch request to post it to the database
             fetch(`/api/books`, {
                 method: 'POST',
                 body: JSON.stringify(newSave),
                 headers: { "Content-Type": "application/json" }
             })
+                // json that response and let the user know that it was saved
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data)
+
                     console.log(`${book.volumeInfo.title} saved`)
                 })
         }
+
         //Return it all
         return (
             <div>
@@ -105,31 +84,32 @@ export default class Search extends Component {
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit}
                 />
+
+                {/* Statement to display something different if nothing has been searched for yet */}
                 {this.state.result.length ? (
                     <div className="container">
-
-
+                        {/* Map through the API results */}
                         {
                             this.state.result.map(book =>
                                 <div style={SearchedStyles.Cards} className="card" key={book.id}>
                                     <div className="card-title row justify-content-around">
                                         <h4 className="col-md-5">{book.volumeInfo.title}</h4>
-
+                                        {/* Button to view the book on googlebooks */}
                                         <button className="btn btn-outline-danger links">
                                             <a className="links"
                                                 href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer">
                                                 View on Google Books
                                     </a>
                                         </button>
-
+                                        {/* Button to save the book to the database */}
                                         <button style={SearchedStyles.Button}
                                             className="btn btn-outline-success"
                                             onClick={() => saveBook(book)} >Save Book
                                 </button>
-
                                     </div>
+                                    {/* Display each book */}
                                     <div className="card-body row">
-                                        <img style={SearchedStyles.Images} className="col-md-2" src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=5&source=gbs_api`} alt="book cover" />
+                                        <img style={SearchedStyles.Images} className="col-md-2" src={`https://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=5&source=gbs_api`} alt="book cover" />
                                         <h5 className="col-md-2">{book.volumeInfo.authors}</h5>
                                         <p className="col-md-8">{book.volumeInfo.description}</p>
 
@@ -144,6 +124,7 @@ export default class Search extends Component {
 
                     </div>
                 ) : (
+                        // Display this if there are no saved books yet
                         <h3>Please Search For a Book</h3>
                     )}
 
@@ -151,36 +132,3 @@ export default class Search extends Component {
         )
     }
 }
-
-// Table!
-/* <table className="table table-striped table-hover">
-
-                        <thead>
-                            <tr>
-                                <th>Image</th>
-                                <th>Title</th>
-                                <th>Authors</th>
-                                <th>Link</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            */
-                            // {this.state.result.map(book =>
-                            //     <tr key={book.id}>
-                            //         <td><img src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=5&source=gbs_api`} alt="book cover" /></td>
-                            //         <td>{book.volumeInfo.title}</td>
-                            //         <td>{book.volumeInfo.authors}</td>
-                            //         <td> <a href={book.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer"><button>View</button></a></td>
-                            //         <td><button onClick={() => saveBook(book)} >saveBook()</button></td>
-                            //         {/* <td>
-                    //                     <Link to="/saved">
-                    //                         <button>Save {console.log(book.id)}</button>
-                    //                     </Link>
-                    //                 </td> */}
-                    //                 {/* <td><button onClick={() => console.log(book.volumeInfo.title)}>Save</button></td> */}
-                    //             </tr>
-
-                    //             // : <tr><h4>Search for a book</h4></tr>
-                    //         )}
-                    //     </tbody>
-                    // </table>

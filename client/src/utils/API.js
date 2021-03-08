@@ -7,12 +7,11 @@ const APIKEY = "&key=&key=AIzaSyCKu9i_PLjFCu47B2YF3PQAK7E2trvFyjk"
 // set the base requestURL
 const requestUrl = "https://www.googleapis.com/books/v1/volumes?q="
 
-// export function for the axios API call
+// export function for the axios API call yeay!
 export default {
     // Set it to a function
     APISearch: function (query) {
-        // let search = "Apathy"
-        console.log(requestUrl + query + APIKEY)
+        // console.log(requestUrl + query + APIKEY)
         return axios.get(requestUrl + query + APIKEY);
     }
 };

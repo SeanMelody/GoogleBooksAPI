@@ -8,9 +8,10 @@ import Footer from "./Components/Footer/Footer"
 import Nav from "./Components/Nav/Nav";
 
 function App() {
-
+  // Set the state to saved books from the database
   const [savedBooks, setSavedBooks] = useState([])
 
+  // Fetch request to get the books from the database
   const getBooks = () => {
     fetch('/api/books', {
       method: 'GET',
@@ -22,24 +23,23 @@ function App() {
       .then((response) => response.json())
       // Then get the data
       .then((data) => {
-        // For Each loop to loop through the database and get the stock and id
-        // data.forEach(({ id, stock }) => {
-        // })
-        console.log(data)
-        // bookList = data
-        // console.log(bookList)
+        // Console log the data 
+        // console.log(data)
+
+        // Call the set saved books function
         setSavedBooks(data)
       })
 
   }
-  // getBooks()
+  // use Effect to call the get books function
   useEffect(() => {
     getBooks()
   }, [])
 
+  // Return it all!
   return (
     <div className="App">
-      {/* <Header /> */}
+      {/* BrowserRouter to switch between pages */}
       <BrowserRouter>
         <Nav />
         <Switch>
@@ -53,6 +53,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;

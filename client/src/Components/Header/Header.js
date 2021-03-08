@@ -2,7 +2,7 @@
 import React from 'react'
 import HeaderStyles from "./HeaderStyles"
 
-// Header is below the nav bar displaying on every page
+// Header is below the nav bar displaying on both pages
 const Header = (props) => {
     return (
         <header>

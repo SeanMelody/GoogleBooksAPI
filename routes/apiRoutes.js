@@ -40,8 +40,6 @@ router.delete("/books/:id", (req, res) => {
 })
 
 
-
-
 // dotenv const to hide API keys=
 // const dotenv = require('dotenv').config()
 // // Check for errors
@@ -58,6 +56,6 @@ router.get("/test", (req, res) => {
 });
 
 
-
+// Export it all as router
 module.exports = router
 

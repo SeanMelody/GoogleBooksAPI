@@ -1,4 +1,5 @@
 module.exports = {
+    // Styling for API searched books
     Cards: {
         padding: "10px",
         margin: "5px",

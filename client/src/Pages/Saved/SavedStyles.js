@@ -1,4 +1,5 @@
 module.exports = {
+    // Style for the saved book page
     Cards: {
         padding: "10px",
         margin: "5px",

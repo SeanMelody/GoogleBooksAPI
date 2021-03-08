@@ -1,4 +1,5 @@
 module.exports = {
+    // Search Component Styles
     FormStyles: {
         padding: "50px",
         margin: "50px",

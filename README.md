@@ -1,6 +1,5 @@
 # GoogleBooksAPI
 Search and Save books using React, MongoDB and GoogleBooksAPI
-# Employee-Directory
 
 <img src="https://img.shields.io/badge/LICENSE-mit-green"/>
 

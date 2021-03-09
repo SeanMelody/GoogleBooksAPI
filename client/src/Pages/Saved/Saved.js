@@ -1,5 +1,5 @@
 // Import all the goodness
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../../Components/Header/Header'
 import SavedStyles from "./SavedStyles"
 
@@ -21,7 +21,16 @@ const deleteBook = (id) => {
 }
 
 
+
+
 const Saved = (props) => {
+
+    const { savedBooks, getBooks } = props
+
+    useEffect(() => {
+        getBooks()
+        // eslint-disable-next-line
+    }, [])
 
     // Render all the data using React and Props!
     return (
@@ -30,10 +39,10 @@ const Saved = (props) => {
             {/* Have to refresh to see the newly added books */}
             <p>Refresh the page to see your newly saved books</p>
             {/* Statement to display something different if there are no saved books yet */}
-            {props.savedBooks.length ? (
+            {savedBooks.length ? (
                 <div className="container">
                     {/* Map through the results from the Mongoose Database */}
-                    {props.savedBooks.map((savedBook) => (
+                    {savedBooks.map((savedBook) => (
                         // Set each book to a card
                         <div style={SavedStyles.Cards} className="card" key={savedBook._id}>
                             <div className="card-title row justify-content-around" >

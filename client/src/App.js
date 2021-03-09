@@ -7,6 +7,7 @@ import Saved from "./Pages/Saved/Saved"
 import Footer from "./Components/Footer/Footer"
 import Nav from "./Components/Nav/Nav";
 
+
 function App() {
   // Set the state to saved books from the database
   const [savedBooks, setSavedBooks] = useState([])
@@ -34,7 +35,10 @@ function App() {
   // use Effect to call the get books function
   useEffect(() => {
     getBooks()
+    // eslint-disable-line no-alert
   }, [])
+
+
 
   // Return it all!
   return (
@@ -43,14 +47,17 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Switch>
-          <Route path="/saved" component={Saved}>
-            <Saved savedBooks={savedBooks} />
-          </Route>
+          <Route path="/saved" render={(props) => (
+            <Saved savedBooks={savedBooks} getBooks={getBooks} />
+
+          )} />
+
+          {/* </Route> */}
           <Route exact path="/" component={Search} />
         </Switch>
       </BrowserRouter>
       <Footer />
-    </div>
+    </div >
   );
 }
 

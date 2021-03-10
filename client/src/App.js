@@ -7,10 +7,21 @@ import Saved from "./Pages/Saved/Saved"
 import Footer from "./Components/Footer/Footer"
 import Nav from "./Components/Nav/Nav";
 
+// import socketIOClient from "socket.io-client";
+// const ENDPOINT = "https://localhost:4001";
+
 
 function App() {
   // Set the state to saved books from the database
   const [savedBooks, setSavedBooks] = useState([])
+
+  // const [response, setResponse] = useState("");
+  // useEffect(() => {
+  //   const socket = socketIOClient(ENDPOINT);
+  //   socket.on("FromAPI", data => {
+  //     setResponse(data);
+  //   });
+  // }, []);
 
   // Fetch request to get the books from the database
   const getBooks = () => {
@@ -46,6 +57,9 @@ function App() {
       {/* BrowserRouter to switch between pages */}
       <BrowserRouter>
         <Nav />
+        {/* <p>
+          It's <time dateTime={response}>{response}</time>
+        </p> */}
         <Switch>
           <Route path="/saved" render={(props) => (
             <Saved savedBooks={savedBooks} getBooks={getBooks} />
@@ -53,6 +67,7 @@ function App() {
           )} />
 
           {/* </Route> */}
+          <Route path="/" component={Search} />
           <Route exact path="/" component={Search} />
         </Switch>
       </BrowserRouter>

@@ -39,6 +39,10 @@ router.delete("/books/:id", (req, res) => {
         })
 })
 
+// router.get("/socket", (req, res) => {
+//     res.send({ response: "I am alive" }).status(200);
+// });
+
 
 // dotenv const to hide API keys=
 // const dotenv = require('dotenv').config()

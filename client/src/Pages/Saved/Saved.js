@@ -20,9 +20,6 @@ const deleteBook = (id) => {
 
 }
 
-
-
-
 const Saved = (props) => {
 
     const { savedBooks, getBooks } = props

@@ -43,9 +43,14 @@ https://google-books-api-sm.herokuapp.com/
 
 Gif Walkthrough:
 
+![Google Book API Walk Through](https://user-images.githubusercontent.com/68625400/110556046-9f6b9180-80f2-11eb-85a0-fe1ec0ece9d5.gif)
 
 
 Screen Capture Walkthrough:
+
+![GoogleBooksAPI-1](https://user-images.githubusercontent.com/68625400/110555730-f4f36e80-80f1-11eb-8c15-4b16ab53b647.png)
+![GoogleBooksAPI-2](https://user-images.githubusercontent.com/68625400/110555732-f6249b80-80f1-11eb-8d2b-bc8e5c4b965c.png)
+![GoogleBooksAPI-3](https://user-images.githubusercontent.com/68625400/110555739-f7ee5f00-80f1-11eb-955a-837f3deeee47.png)
 
 
   

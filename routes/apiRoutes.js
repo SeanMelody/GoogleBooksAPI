@@ -59,6 +59,11 @@ router.get("/test", (req, res) => {
     res.send({ msg: "success" });
 });
 
+// // Send every other request to the React app
+// router.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "./client/public/index.html"));
+// });
+
 
 // Export it all as router
 module.exports = router

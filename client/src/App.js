@@ -67,7 +67,7 @@ function App() {
           )} />
 
           {/* </Route> */}
-          <Route path="/" component={Search} />
+          {/* <Route path="/" component={Search} /> */}
           <Route exact path="/" component={Search} />
         </Switch>
       </BrowserRouter>

@@ -56,11 +56,6 @@ if (process.env.NODE_ENV === "production") {
 app.use("/api", require("./routes/apiRoutes"))
 
 
-// Send every other request to the React app
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/public/index.html"));
-});
-
 // Mongoose connect to googlebooks API.  Same as for Atlas
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
   useNewUrlParser: true,

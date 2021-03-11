@@ -34,7 +34,7 @@ const Saved = (props) => {
         <div>
             <Header title={"Saved Books"} />
             {/* Have to refresh to see the newly added books */}
-            <p>Refresh the page to see your newly saved books</p>
+            {/* <p>Refresh the page to see your newly saved books</p> */}
             {/* Statement to display something different if there are no saved books yet */}
             {savedBooks.length ? (
                 <div className="container">

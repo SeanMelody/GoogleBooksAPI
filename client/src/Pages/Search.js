@@ -4,6 +4,7 @@ import API from "../utils/API"
 import SearchForm from "../Components/Search/SearchForm"
 import SearchedStyles from "./SearchedStyles"
 
+
 // Export default here instead of below!
 export default class Search extends Component {
 

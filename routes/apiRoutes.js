@@ -1,6 +1,12 @@
 // const axios = require("axios")
 const router = require("express").Router()
 const db = require("../models")
+const API_KEY = `${process.env.REACT_APP_GOOGLE_API_KEY}`;
+
+console.log(process.env.REACT_APP_GOOGLE_API_KEY)
+console.log("line 7")
+console.log("API", API_KEY)
+
 
 // GET /books to get all the saved books
 router.get("/books", (req, res) => {

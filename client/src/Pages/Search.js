@@ -1,5 +1,7 @@
 // Import all the necessary goodness!
 import React, { Component } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import API from "../utils/API"
 import SearchForm from "../Components/Search/SearchForm"
 import SearchedStyles from "./SearchedStyles"
@@ -72,9 +74,10 @@ export default class Search extends Component {
                 .then((data) => {
 
                     console.log(`${book.volumeInfo.title} saved`)
+
                 })
         }
-
+        const notify = (book) => toast(`${book.volumeInfo.title} Saved`)
         //Return it all
         return (
             <div>
@@ -85,7 +88,7 @@ export default class Search extends Component {
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit}
                 />
-
+                <ToastContainer />
                 {/* Statement to display something different if nothing has been searched for yet */}
                 {this.state.result.length ? (
                     <div className="container">
@@ -105,7 +108,7 @@ export default class Search extends Component {
                                         {/* Button to save the book to the database */}
                                         <button style={SearchedStyles.Button}
                                             className="btn btn-outline-success"
-                                            onClick={() => saveBook(book)} >Save Book
+                                            onClick={() => { saveBook(book); notify(book) }} >Save Book
                                 </button>
                                     </div>
                                     {/* Display each book */}
@@ -125,9 +128,9 @@ export default class Search extends Component {
 
                     </div>
                 ) : (
-                        // Display this if there are no saved books yet
-                        <h3>Please Search For a Book</h3>
-                    )}
+                    // Display this if there are no saved books yet
+                    <h3>Please Search For a Book</h3>
+                )}
 
             </div >
         )

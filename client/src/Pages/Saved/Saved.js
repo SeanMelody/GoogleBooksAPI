@@ -1,28 +1,37 @@
 // Import all the goodness
 import React, { useEffect } from 'react'
+// import { useHistory } from 'react-router-dom';
 import Header from '../../Components/Header/Header'
 import SavedStyles from "./SavedStyles"
 
 
-// Function to delete the book from the database by ID
-const deleteBook = (id) => {
-    fetch(`/api/books/${id}`, {
-        method: 'DELETE'
-        // Json that response
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            // Console log the data
-            console.log(data)
-        })
-    // Refresh the page so that the book is no longer shown
-    window.location.reload()
 
-}
 
 const Saved = (props) => {
 
     const { savedBooks, getBooks } = props
+
+    // const history = useHistory()
+
+    // Function to delete the book from the database by ID
+    const deleteBook = (id) => {
+        fetch(`/api/books/${id}`, {
+            method: 'DELETE'
+            // Json that response
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                // Console log the data
+                console.log(data)
+                getBooks()
+            })
+        // Refresh the page so that the book is no longer shown
+        // window.location.reload()
+
+        // history.push("/")
+        getBooks()
+
+    }
 
     useEffect(() => {
         getBooks()
@@ -51,13 +60,13 @@ const Saved = (props) => {
                                         href={savedBook.link} target="_blank" rel="noopener noreferrer"
                                     >
                                         View on Google Books
-                                </a>
+                                    </a>
                                 </button>
                                 {/* Button to call the delete book function */}
                                 <button style={SavedStyles.Button}
                                     className="btn btn-outline-danger"
                                     onClick={() => deleteBook(savedBook._id)}>Delete Book
-                            </button>
+                                </button>
 
                             </div>
                             {/* Div to dispaly the card body, image, authors and descrioption */}
@@ -73,9 +82,9 @@ const Saved = (props) => {
                 </div>
 
             ) : (
-                    // Display this if there are no saved books yet
-                    <h3>No Saved Books Yet</h3>
-                )}
+                // Display this if there are no saved books yet
+                <h3>No Saved Books Yet</h3>
+            )}
 
 
         </div >
